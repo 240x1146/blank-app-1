@@ -1,64 +1,93 @@
 import streamlit as st
 
 # アプリのタイトル
-st.title("💖 K-Pop推しメン診断アプリ 💖")
-st.write("あなたの理想のタイプを選択して、「診断する」を押してください！")
+st.set_page_config(page_title="K-Pop推し診断", layout="wide")
+st.title("💖 K-Popパーツ診断アプリ 💖")
+st.write("イメージ図を参考に、あなたの好みを直感的に選んでください！")
 
-# --- 入力セクション ---
-st.header("1. 好みのタイプを選択")
+# セッション状態の初期化（選択を保持するため）
+if 'selections' not in st.session_state:
+    st.session_state.selections = {"style": None, "hair": None, "eye": None, "height": None}
 
-# セレクトボックスで条件を選択
-type_style = st.radio("全体の雰囲気", ["かわいい系", "美人系"], horizontal=True)
-hair = st.radio("髪型", ["ロング", "ショート"], horizontal=True)
-eye = st.radio("目元", ["二重", "一重"], horizontal=True)
-height = st.radio("身長", ["高身長", "低身長"], horizontal=True)
+# --- ステップ1：雰囲気 ---
+st.header("1. 全体の雰囲気は？")
+col1, col2 = st.columns(2)
+with col1:
+    st.image("https://via.placeholder.com/300x200.png?text=Cute+Vibe", caption="柔らかい・愛らしい")
+    if st.button("かわいい系を選ぶ"):
+        st.session_state.selections["style"] = "かわいい系"
+with col2:
+    st.image("https://via.placeholder.com/300x200.png?text=Beauty+Vibe", caption="綺麗・大人っぽい")
+    if st.button("美人系を選ぶ"):
+        st.session_state.selections["style"] = "美人系"
 
-# --- 診断ロジック ---
-def diagnose(type_style, hair, eye, height):
-    # 組み合わせに応じたアイドル判定（例）
-    if type_style == "かわいい系" and eye == "二重" and height == "低身長":
-        return {
-            "name": "チキータ (BABYMONSTER)",
-            "desc": "末っ子らしい愛らしさと、パワフルなダンスのギャップが魅力！",
-            "img": "https://via.placeholder.com/400x500.png?text=Chiquita"
-        }
-    elif type_style == "美人系" and eye == "二重" and height == "高身長":
-        return {
-            "name": "ウォニョン (IVE)",
-            "desc": "圧倒的なスタイルと気品溢れるビジュアル。まさに現代のアイコンです。",
-            "img": "https://via.placeholder.com/400x500.png?text=Wonyoung"
-        }
-    elif type_style == "美人系" and eye == "二重" and height == "低身長" and hair == "ロング":
-        return {
-            "name": "ソリュン (NMIXX)",
-            "desc": "『ビジュアルの奇跡』と呼ばれるほど整った顔立ちと、高い歌唱力を兼ね備えています。",
-            "img": "https://via.placeholder.com/400x500.png?text=Sullyoon"
-        }
-    elif type_style == "かわいい系" and hair == "ショート":
-        return {
-            "name": "アン・ユジン (IVE)",
-            "desc": "ショートヘアも似合う爽やかで明るいエネルギーが魅力のリーダー！",
-            "img": "https://via.placeholder.com/400x500.png?text=An+Yujin"
-        }
+# --- ステップ2：髪型 ---
+st.header("2. 髪型は？")
+col3, col4 = st.columns(2)
+with col3:
+    st.image("https://via.placeholder.com/300x200.png?text=Long+Hair", caption="王道のロングヘア")
+    if st.button("ロングを選ぶ"):
+        st.session_state.selections["hair"] = "ロング"
+with col4:
+    st.image("https://via.placeholder.com/300x200.png?text=Short+Hair", caption="爽やかなショート・ボブ")
+    if st.button("ショートを選ぶ"):
+        st.session_state.selections["hair"] = "ショート"
+
+# --- ステップ3：目元 ---
+st.header("3. 目元の印象は？")
+col5, col6 = st.columns(2)
+with col5:
+    st.image("https://via.placeholder.com/300x200.png?text=Double+Eyelid", caption="ぱっちり二重")
+    if st.button("二重を選ぶ"):
+        st.session_state.selections["eye"] = "二重"
+with col6:
+    st.image("https://via.placeholder.com/300x200.png?text=Single+Eyelid", caption="クールな一重・奥二重")
+    if st.button("一重を選ぶ"):
+        st.session_state.selections["eye"] = "一重"
+
+# --- ステップ4：身長 ---
+st.header("4. 身長は？")
+col7, col8 = st.columns(2)
+with col7:
+    st.image("https://via.placeholder.com/300x200.png?text=Tall", caption="モデルのような高身長")
+    if st.button("高身長を選ぶ"):
+        st.session_state.selections["height"] = "高身長"
+with col8:
+    st.image("https://via.placeholder.com/300x200.png?text=Small", caption="守りたくなる低身長")
+    if st.button("低身長を選ぶ"):
+        st.session_state.selections["height"] = "低身長"
+
+# --- 現在の選択状況の表示 ---
+st.sidebar.header("現在の選択状況")
+for key, value in st.session_state.selections.items():
+    st.sidebar.write(f"{key}: {value if value else '未選択'}")
+
+# --- 診断実行 ---
+if st.button("✨ この条件で推しを診断する ✨"):
+    # 全ての項目が選ばれているかチェック
+    if None in st.session_state.selections.values():
+        st.error("全ての項目を選択してください！")
     else:
-        # どの条件にも当てはまらなかった場合のランダム、もしくはデフォルト
-        return {
-            "name": "K-Pop界のニュースター",
-            "desc": "あなたのこだわり条件に合うアイドルは、他にもたくさんいます！ぜひ色々なグループをチェックしてみてください。",
-            "img": "https://via.placeholder.com/400x500.png?text=K-Pop+Star"
-        }
+        s = st.session_state.selections
+        # 判定ロジック（例）
+        if s["style"] == "美人系" and s["height"] == "高身長":
+            res_name = "ウォニョン (IVE)"
+            res_desc = "誰もが見惚れる圧倒的なスタイルと美人顔！"
+            res_img = "https://via.placeholder.com/400x500.png?text=WONYOUNG"
+        elif s["style"] == "かわいい系" and s["eye"] == "二重":
+            res_name = "ソリュン (NMIXX)"
+            res_desc = "お人形のような可愛らしさと大きな瞳が特徴！"
+            res_img = "https://via.placeholder.com/400x500.png?text=SULLYOON"
+        else:
+            res_name = "チキータ (BABYMONSTER)"
+            res_desc = "フレッシュな魅力とクールな表情を併せ持つ新星！"
+            res_img = "https://via.placeholder.com/400x500.png?text=CHIQUITA"
 
-# --- 実行ボタン ---
-if st.button("診断する"):
-    result = diagnose(type_style, hair, eye, height)
-    
-    st.divider()
-    st.header(f"あなたにおすすめなのは... {result['name']}")
-    
-    col_img, col_txt = st.columns([1, 1])
-    with col_img:
-        st.image(result['img'])
-    with col_txt:
-        st.write(result['desc'])
-        st.success("相性抜群のアイドルが見つかりました！")
+        st.divider()
         st.balloons()
+        st.header(f"あなたへの提案：{res_name}")
+        c_res1, c_res2 = st.columns(2)
+        with c_res1:
+            st.image(res_img)
+        with c_res2:
+            st.write(res_desc)
