@@ -5,9 +5,9 @@ st.set_page_config(page_title="K-Pop推し診断", layout="wide")
 st.title("💖 K-Popパーツ診断アプリ 💖")
 st.write("イメージ図を参考に、あなたの好みを直感的に選んでください！")
 
-# セッション状態の初期化（選択を保持するため）
+# セッション状態の初期化（選択項目を保持。身長を'face_type'に変更）
 if 'selections' not in st.session_state:
-    st.session_state.selections = {"style": None, "hair": None, "eye": None, "height": None}
+    st.session_state.selections = {"style": None, "hair": None, "eye": None, "face_type": None}
 
 # --- ステップ1：雰囲気 ---
 st.header("1. 全体の雰囲気は？")
@@ -37,7 +37,8 @@ with col4:
 st.header("3. 目元の印象は？")
 col5, col6 = st.columns(2)
 with col5:
-    st.image("", caption="ぱっちり二重")
+    # プレースホルダ画像URLをセット
+    st.image("https://via.placeholder.com/300x200.png?text=Double+Eyelid", caption="ぱっちり二重")
     if st.button("二重を選ぶ"):
         st.session_state.selections["eye"] = "二重"
 with col6:
@@ -45,22 +46,23 @@ with col6:
     if st.button("一重を選ぶ"):
         st.session_state.selections["eye"] = "一重"
 
-# --- ステップ4：身長 ---
-st.header("4. 身長は？")
+# --- ステップ4：顔のタイプ (猫顔 or 犬顔) ---
+st.header("4. 顔のタイプは？")
 col7, col8 = st.columns(2)
 with col7:
-    st.image("https://via.placeholder.com/300x200.png?text=Tall", caption="モデルのような高身長")
-    if st.button("高身長を選ぶ"):
-        st.session_state.selections["height"] = "高身長"
+    st.image("https://via.placeholder.com/300x200.png?text=Cat+Face", caption="ツンとした美しさの猫顔")
+    if st.button("猫顔を選ぶ"):
+        st.session_state.selections["face_type"] = "猫顔"
 with col8:
-    st.image("https://via.placeholder.com/300x200.png?text=Small", caption="守りたくなる低身長")
-    if st.button("低身長を選ぶ"):
-        st.session_state.selections["height"] = "低身長"
+    st.image("https://via.placeholder.com/300x200.png?text=Dog+Face", caption="人懐っこい愛嬌の犬顔")
+    if st.button("犬顔を選ぶ"):
+        st.session_state.selections["face_type"] = "犬顔"
 
-# --- 現在の選択状況の表示 ---
+# --- 現在の選択状況の表示 (サイドバー) ---
 st.sidebar.header("現在の選択状況")
 for key, value in st.session_state.selections.items():
-    st.sidebar.write(f"{key}: {value if value else '未選択'}")
+    label = {"style": "雰囲気", "hair": "髪型", "eye": "目元", "face_type": "顔タイプ"}[key]
+    st.sidebar.write(f"**{label}**: {value if value else '未選択'}")
 
 # --- 診断実行 ---
 if st.button("✨ この条件で推しを診断する ✨"):
@@ -69,19 +71,31 @@ if st.button("✨ この条件で推しを診断する ✨"):
         st.error("全ての項目を選択してください！")
     else:
         s = st.session_state.selections
-        # 判定ロジック（例）
-        if s["style"] == "美人系" and s["height"] == "高身長":
+        
+        # 判定ロジック：橋本さんの好きなグループを中心に構成
+        # 1. IVE ウォニョン (美人系 + 猫顔)
+        if s["style"] == "美人系" and s["face_type"] == "猫顔":
             res_name = "ウォニョン (IVE)"
-            res_desc = "誰もが見惚れる圧倒的なスタイルと美人顔！"
+            res_desc = "圧倒的なカリスマ性と猫のような気品溢れるビジュアル。まさに現代のアイコン！"
             res_img = "https://via.placeholder.com/400x500.png?text=WONYOUNG"
-        elif s["style"] == "かわいい系" and s["eye"] == "二重":
+            
+        # 2. NMIXX ソリュン (かわいい系 + 犬顔)
+        elif s["style"] == "かわいい系" and s["face_type"] == "犬顔":
             res_name = "ソリュン (NMIXX)"
-            res_desc = "お人形のような可愛らしさと大きな瞳が特徴！"
+            res_desc = "お人形のような愛らしさと、犬のように人懐っこい瞳が魅力的なビジュアルクイーン。"
             res_img = "https://via.placeholder.com/400x500.png?text=SULLYOON"
-        else:
+            
+        # 3. BABYMONSTER チキータ (クール・かわいい + 猫顔)
+        elif s["face_type"] == "猫顔":
             res_name = "チキータ (BABYMONSTER)"
-            res_desc = "フレッシュな魅力とクールな表情を併せ持つ新星！"
+            res_desc = "末っ子ながらクールで猫のような鋭いパフォーマンスが目を引く新星。"
             res_img = "https://via.placeholder.com/400x500.png?text=CHIQUITA"
+            
+        # 4. その他（IVE アン・ユジンなど）
+        else:
+            res_name = "アン・ユジン (IVE)"
+            res_desc = "大型犬のような明るいエネルギーと、誰からも愛される健康的なビジュアルの持ち主。"
+            res_img = "https://via.placeholder.com/400x500.png?text=ANYUJIN"
 
         st.divider()
         st.balloons()
@@ -91,3 +105,4 @@ if st.button("✨ この条件で推しを診断する ✨"):
             st.image(res_img)
         with c_res2:
             st.write(res_desc)
+            st.info("このアイドルをチェックしてみましょう！")
