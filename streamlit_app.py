@@ -13,11 +13,11 @@ if 'selections' not in st.session_state:
 st.header("1. 全体の雰囲気は？")
 col1, col2 = st.columns(2)
 with col1:
-    st.image("https://via.placeholder.com/300x200.png?text=Cute+Vibe", caption="柔らかい・愛らしい")
+    st.image("https://assets.st-note.com/production/uploads/images/77120728/rectangle_large_type_2_1fbd4ace7023a5295f2b44f31681a476.jpg?width=1280", caption="柔らかい・愛らしい")
     if st.button("かわいい系を選ぶ"):
         st.session_state.selections["style"] = "かわいい系"
 with col2:
-    st.image("https://via.placeholder.com/300x200.png?text=Beauty+Vibe", caption="綺麗・大人っぽい")
+    st.image("https://hips.hearstapps.com/hmg-prod/images/tzuyu-of-twice-attends-the-29th-high1-seoul-music-awards-news-photo-1615387889.?crop=0.709xw:0.593xh;0.143xw,0", caption="綺麗・大人っぽい")
     if st.button("美人系を選ぶ"):
         st.session_state.selections["style"] = "美人系"
 
@@ -25,11 +25,11 @@ with col2:
 st.header("2. 髪型は？")
 col3, col4 = st.columns(2)
 with col3:
-    st.image("https://via.placeholder.com/300x200.png?text=Long+Hair", caption="王道のロングヘア")
+    st.image("https://www.lemon8-app.com/seo/image?item_id=7486886065383588407&index=0&sign=a1759eff2a3c84d50a29c6dbf79e1725", caption="王道のロングヘア")
     if st.button("ロングを選ぶ"):
         st.session_state.selections["hair"] = "ロング"
 with col4:
-    st.image("https://via.placeholder.com/300x200.png?text=Short+Hair", caption="爽やかなショート・ボブ")
+    st.image("https://cdn-ak.f.st-hatena.com/images/fotolife/t/teajo/20240630/20240630202242.jpg", caption="爽やかなショート・ボブ")
     if st.button("ショートを選ぶ"):
         st.session_state.selections["hair"] = "ショート"
 
@@ -37,7 +37,7 @@ with col4:
 st.header("3. 目元の印象は？")
 col5, col6 = st.columns(2)
 with col5:
-    st.image("https://via.placeholder.com/300x200.png?text=Double+Eyelid", caption="ぱっちり二重")
+    st.image("", caption="ぱっちり二重")
     if st.button("二重を選ぶ"):
         st.session_state.selections["eye"] = "二重"
 with col6:
