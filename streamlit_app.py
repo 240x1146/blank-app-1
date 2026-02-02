@@ -109,3 +109,13 @@ if st.button("✨ この条件で推しを診断する ✨"):
         with c_res2:
             st.write(res_desc)
             st.info("このアイドルをチェックしてみましょう！")
+            # 診断ボタンが押されたとき
+if submitted:
+    # 診断結果（例）
+    result = "IVE" 
+    
+    # データを保存
+    data = {"user_name": name, "result_group": result}
+    supabase.table("kpop_diagnosis_logs").insert(data).execute()
+    
+    st.success(f"結果は {result} です！データベースに保存しました。")
