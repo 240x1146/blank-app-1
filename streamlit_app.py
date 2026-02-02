@@ -55,7 +55,7 @@ with col1:
         st.session_state.selections["style"] = "かわいい系"
 with col2:
     # 綺麗・大人っぽい（リズちゃん）の画像
-    st.image("https://cdn.livedoor.jp/kstyle/73b93eb0acf76c5e4b1cab943e4c77a6.jpg/r.580x0")         
+    st.image("https://cdn.livedoor.jp/kstyle/73b93eb0acf76c5e4b1cab943e4c77a6.jpg/r.580x0",        
     caption="綺麗・大人っぽい", use_container_width=True)
     if st.button("美人系を選ぶ"):
         st.session_state.selections["style"] = "美人系"
