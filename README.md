@@ -3,7 +3,7 @@
 直感的なパーツ選択で、あなたにぴったりのK-Pop推しメンを提案する診断アプリです。
 
 ## 🚀 アプリのURL
-[こちらからアプリを試用できます](https://blank-app-bbgvnmfislv.streamlit.app)
+[こちらからアプリを試用できます](https://blank-app-bbgvnmfislv.streamlit.app/)
 
 ## ✨ 主な機能
 - **ビジュアル診断**: 「雰囲気」「髪型」「顔のタイプ」の3つのステップを画像で選び、直感的に推しを診断。
