@@ -114,4 +114,32 @@ if st.button("✨ この条件で推しを診断する ✨"):
             res_img = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfI3-rR1-rR1-rR1-rR1-rR1-rR1-rR1-rR1&s"
         else:
             res_name = "アン・ユジン (IVE)"
-            res_desc = "大型犬のような明るいエネルギーと、
+            res_desc = "大型犬のような明るいエネルギーと、誰からも愛される健康的なビジュアル。"
+            res_img = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzR-rR1-rR1-rR1-rR1-rR1-rR1-rR1-rR1&s"
+
+        st.divider()
+        st.balloons()
+        st.header(f"あなたへの提案：{res_name}")
+        c_res1, c_res2 = st.columns(2)
+        with c_res1:
+            st.image(res_img, use_container_width=True)
+        with c_res2:
+            st.write(res_desc)
+            st.info("このアイドルをチェックしてみましょう！")
+
+        # --- Supabaseへデータを保存 ---
+        data = {"user_name": user_name, "result_group": res_name}
+        try:
+            supabase.table("kpop_diagnosis_logs").insert(data).execute()
+            st.toast("診断結果を保存しました！")
+        except Exception as e:
+            st.error(f"保存失敗: {e}")
+
+# 過去の履歴を表示
+if st.checkbox("みんなの診断履歴を表示"):
+    try:
+        res = supabase.table("kpop_diagnosis_logs").select("*").order("created_at", desc=True).execute()
+        if res.data:
+            st.table(res.data)
+    except:
+        st.info("履歴を取得できません。")
