@@ -107,7 +107,7 @@ if st.button("✨ この条件で推しを診断する ✨"):
         elif s["style"] == "かわいい系" and s["face_type"] == "犬顔":
             res_name = "ソリュン (NMIXX)"
             res_desc = "お人形のような愛らしさと人懐っこい瞳。ビジュアルクイーンです。"
-            res_img = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiNP8fOOGeP7ptsf700c4M-bqmAdQgMmunTQIZchyJ-g&s"
+            res_img = "https://www.lemon8-app.com/seo/image?item_id=7486886065383588407&index=0&sign=a1759eff2a3c84d50a29c6dbf79e1725"
         elif s["face_type"] == "猫顔":
             res_name = "チキータ (BABYMONSTER)"
             res_desc = "クールで猫のような鋭いパフォーマンスが目を引く新星！"
@@ -115,7 +115,7 @@ if st.button("✨ この条件で推しを診断する ✨"):
         else:
             res_name = "アン・ユジン (IVE)"
             res_desc = "大型犬のような明るいエネルギーと、誰からも愛される健康的なビジュアル。"
-            res_img = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzR-rR1-rR1-rR1-rR1-rR1-rR1-rR1-rR1&s"
+            res_img = "https://hips.hearstapps.com/hmg-prod/images/img-1856-66d1a55b5b742.jpeg?crop=1xw:1xh;center,top&resize=980:*"
 
         st.divider()
         st.balloons()
