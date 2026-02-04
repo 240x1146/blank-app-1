@@ -111,7 +111,7 @@ if st.button("✨ この条件で推しを診断する ✨"):
         elif s["face_type"] == "猫顔":
             res_name = "チキータ (BABYMONSTER)"
             res_desc = "クールで猫のような鋭いパフォーマンスが目を引く新星！"
-            res_img = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfI3-rR1-rR1-rR1-rR1-rR1-rR1-rR1-rR1&s"
+            res_img = "https://i.pinimg.com/1200x/72/23/9f/72239f81e259243f48b4d67154b3c1ea.jpg"
         elif s["style"]  == "美人系" and s["face_type"] == "猫顔":
               res_name = "ガウル(IVE)"
               res_desc = "aaaa"
