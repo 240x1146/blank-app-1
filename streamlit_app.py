@@ -113,7 +113,6 @@ if st.button("✨ この条件で推しを診断する ✨"):
               res_desc = "aaaa"
               res_img = "https://hips.hearstapps.com/hmg-prod/images/img-3583-6614d3e041dda.jpeg"
         else:
-              s["style"]  == "かわいい系" and s["face_type"] == "猫顔":
               res_name = "ウィンター(aespa)"
               res_desc = "aaaa"
               res_img = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBHPuPnwFRlur3HwH2tgRssLoJz2qkyQr53A&s"
