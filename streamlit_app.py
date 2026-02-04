@@ -104,27 +104,20 @@ if st.button("✨ この条件で推しを診断する ✨"):
             res_name = "ウォニョン (IVE)"
             res_desc = "圧倒的なカリスマ性と猫のような気品。まさに現代のアイコン！"
             res_img = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSEYPQPYGxNHam0YruA9HcVCi312VFThOR9PHnd9MyfQ&s"
-        elif s["style"] == "かわいい系" and s["face_type"] == "犬顔":
+        elif s["style"] == "美人系" and s["face_type"] == "犬顔":
             res_name = "ソリュン (NMIXX)"
             res_desc = "お人形のような愛らしさと人懐っこい瞳。ビジュアルクイーンです。"
             res_img = "https://www.lemon8-app.com/seo/image?item_id=7486886065383588407&index=0&sign=a1759eff2a3c84d50a29c6dbf79e1725"
-        elif s["face_type"] == "猫顔":
-            res_name = "チキータ (BABYMONSTER)"
-            res_desc = "クールで猫のような鋭いパフォーマンスが目を引く新星！"
-            res_img = "https://i.pinimg.com/1200x/72/23/9f/72239f81e259243f48b4d67154b3c1ea.jpg"
-        elif s["style"]  == "美人系" and s["face_type"] == "猫顔":
-              res_name = "ガウル(IVE)"
+        elif s["style"]  == "かわいい系" and s["face_type"] == "犬顔":
+              res_name = "ジウ(NMIXX)"
               res_desc = "aaaa"
-              res_img = "https://i.pinimg.com/736x/07/bc/41/07bc41fffdd83f18c856db345211c2e2.jpg"
-        elif s["style"]  == "かわいい系" and s["face_type"] == "猫顔":
+              res_img = "https://hips.hearstapps.com/hmg-prod/images/img-3583-6614d3e041dda.jpeg"
+        else:
+              s["style"]  == "かわいい系" and s["face_type"] == "猫顔":
               res_name = "ウィンター(aespa)"
               res_desc = "aaaa"
               res_img = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBHPuPnwFRlur3HwH2tgRssLoJz2qkyQr53A&s"
-        else:
-            res_name = "アン・ユジン (IVE)"
-            res_desc = "大型犬のような明るいエネルギーと、誰からも愛される健康的なビジュアル。"
-            res_img = "https://hips.hearstapps.com/hmg-prod/images/img-1856-66d1a55b5b742.jpeg?crop=1xw:1xh;center,top&resize=980:*"
-
+        
         st.divider()
         st.balloons()
         st.header(f"あなたへの提案：{res_name}")
