@@ -116,6 +116,10 @@ if st.button("✨ この条件で推しを診断する ✨"):
               res_name = "ガウル(IVE)"
               res_desc = "aaaa"
               res_img = "https://i.pinimg.com/736x/07/bc/41/07bc41fffdd83f18c856db345211c2e2.jpg"
+        elif s["style"]  == "かわいい系" and s["face_type"] == "猫顔":
+              res_name = "ウィンター(aespa)"
+              res_desc = "aaaa"
+              res_img = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBHPuPnwFRlur3HwH2tgRssLoJz2qkyQr53A&s"
         else:
             res_name = "アン・ユジン (IVE)"
             res_desc = "大型犬のような明るいエネルギーと、誰からも愛される健康的なビジュアル。"
