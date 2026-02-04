@@ -115,7 +115,7 @@ if st.button("✨ この条件で推しを診断する ✨"):
         else:
               res_name = "ウィンター(aespa)"
               res_desc = "aaaa"
-              res_img = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBHPuPnwFRlur3HwH2tgRssLoJz2qkyQr53A&s"
+              res_img = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBHPuPnwFRlur3HwH2tgRssLoJz2qkyQr53A&s" and "https://www.lemon8-app.com/seo/image?item_id=7322459646626267654&index=2&sign=ee609b5c9b0dbcf4ff38ff4c1b4ca6fa"
         
         st.divider()
         st.balloons()
