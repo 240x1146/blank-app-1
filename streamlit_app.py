@@ -112,6 +112,10 @@ if st.button("✨ この条件で推しを診断する ✨"):
             res_name = "チキータ (BABYMONSTER)"
             res_desc = "クールで猫のような鋭いパフォーマンスが目を引く新星！"
             res_img = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfI3-rR1-rR1-rR1-rR1-rR1-rR1-rR1-rR1&s"
+        elif s["style"]  == "美人系" and s["face_type"] == "猫顔":
+              res_name = "ガウル(IVE)"
+              res_desc = "aaaa"
+              res_img = "https://i.pinimg.com/736x/07/bc/41/07bc41fffdd83f18c856db345211c2e2.jpg"
         else:
             res_name = "アン・ユジン (IVE)"
             res_desc = "大型犬のような明るいエネルギーと、誰からも愛される健康的なビジュアル。"
